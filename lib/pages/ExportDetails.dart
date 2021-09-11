@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:inventory_management_software/models/Export.dart';
 import 'package:inventory_management_software/models/Customer.dart';
 import 'package:inventory_management_software/models/ExportDetail.dart';
+import 'package:inventory_management_software/models/Product.dart';
 import 'package:inventory_management_software/pages/ExportDetailProduct.dart';
 import 'package:inventory_management_software/services/APIService.dart';
 
@@ -226,7 +227,7 @@ class _ExportDetailsState extends State<ExportDetails>{
   }
 
   Future<List<ExportDetail>> GetExportDetails() async{
-    String query = 'ExportId=';
+    String query = 'ImportExportId=';
     if(widget.export != null)
       query = query + widget.export!.id.toString();
     else
@@ -266,7 +267,7 @@ class _ExportDetailsState extends State<ExportDetails>{
                 var delete = await APIService.Delete('ExportDetail', exportDetail.id);
                 setState((){});
               },
-            )
+            ),
           ],
         ),
       ),

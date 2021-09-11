@@ -43,6 +43,7 @@ class MyApp extends StatelessWidget {
         '/exports':(context)=>Exports(),
         '/userProfile':(context)=>UserProfile(),
         '/notifications':(context)=>Notifications(),
+        '/login':(context)=>Login(),
       },
     );
   }

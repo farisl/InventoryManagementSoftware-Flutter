@@ -22,7 +22,7 @@ class _UserProfileState extends State<UserProfile> {
             child: ListView(
               children: [
                 DrawerHeader(
-                  child: Image(image: AssetImage('assets/imssq-newwhite.jpg')
+                  child: Image(image: AssetImage('assets/invento.png')
                 ),
                   decoration: BoxDecoration(
                       color: Colors.blueAccent
@@ -58,6 +58,15 @@ class _UserProfileState extends State<UserProfile> {
                     Navigator.of(context).pushNamed('/notifications');
                   },
                 ),
+                ListTile(
+                  title: Text('Sign out'),
+                  onTap: (){
+                    //Navigator.of(context).popUntil((route) => false)
+                    Navigator.pop(context, ModalRoute.withName('/userProfile'));
+                    Navigator.of((context)).pushReplacementNamed(
+                        '/login');
+                  },
+                ),
               ],
             ),
           ),
@@ -74,8 +83,9 @@ class _UserProfileState extends State<UserProfile> {
               RaisedButton(
                 onPressed: (){
                   if(_formKey.currentState!.validate()) {
-                    showAlertDialog(context, 'User data successfully saved.');
                     var update = Save();
+                    showAlertDialog(context, 'User data successfully saved.');
+
                   }
                 },
                 child: Text('Save', style: TextStyle(fontSize: 18),),

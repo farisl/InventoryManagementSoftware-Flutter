@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:inventory_management_software/models/Export.dart';
 import 'package:inventory_management_software/pages/ExportDetails.dart';
+import 'package:inventory_management_software/models/Product.dart';
 import 'package:inventory_management_software/services/APIService.dart';
+
 
 class Exports extends StatefulWidget {
   const Exports({Key? key}) : super(key: key);
@@ -141,7 +143,6 @@ class _ExportsState extends State<Exports> {
       ),
     );
   }
-
 
 
 }

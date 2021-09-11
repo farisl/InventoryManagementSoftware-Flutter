@@ -9,7 +9,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  TextEditingController emailController = new TextEditingController();
+  TextEditingController usernameController = new TextEditingController();
   TextEditingController passwordController = new TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
@@ -27,20 +27,23 @@ class _LoginState extends State<Login> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image(image: AssetImage('assets/imssq-newwhite.jpg')
+                      Image(image: AssetImage('assets/invento.png')
+                      ),
+                      SizedBox(
+                        height: 20,
                       ),
                       TextFormField(
-                        controller: emailController,
+                        controller: usernameController,
                         validator: (value){
                           if(value == null || value.isEmpty)
-                            return 'Email is a required field';
+                            return 'Username is a required field';
                           return null;
                         },
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20)
                           ),
-                          hintText: 'Email'
+                          hintText: 'Username'
                         ),
                       ),
                       SizedBox(
@@ -127,8 +130,8 @@ class _LoginState extends State<Login> {
   }
 
   Future<dynamic>? Login() async{
-    if(emailController.text.isNotEmpty && passwordController.text.isNotEmpty){
-      String query = 'Email=' + emailController.text
+    if(usernameController.text.isNotEmpty && passwordController.text.isNotEmpty){
+      String query = 'Username=' + usernameController.text
           + '&Password=' + passwordController.text;
       var json = await APIService.Post('AuthManagement/Login', query);
       if(json == null) {

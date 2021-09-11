@@ -102,4 +102,17 @@ class APIService{
     return response.statusCode == 200;
   }
 
+  static Future<dynamic> Recommend(String route, int id)  async{
+    String baseUrl = "https://10.0.2.2:5001/" + route + '/' + id.toString()
+      + '/recommend';
+
+    final response = await http.get(
+        Uri.parse(baseUrl),
+    );
+    if(response.statusCode == 200){
+      return json.decode(response.body);
+    }
+    return null;
+  }
+
 }

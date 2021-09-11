@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:inventory_management_software/models/Import.dart';
 import 'package:inventory_management_software/models/Supplier.dart';
 import 'package:inventory_management_software/models/ImportDetail.dart';
+import 'package:inventory_management_software/models/Product.dart';
 import 'package:inventory_management_software/pages/ImportDetailProduct.dart';
 import 'package:inventory_management_software/services/APIService.dart';
 
@@ -226,7 +227,7 @@ class _ImportDetailsState extends State<ImportDetails>{
   }
 
   Future<List<ImportDetail>> GetImportDetails() async{
-    String query = 'ImportId=';
+    String query = 'ImportExportId=';
     if(widget.import != null)
       query = query + widget.import!.id.toString();
      else
@@ -266,11 +267,29 @@ class _ImportDetailsState extends State<ImportDetails>{
                 var delete = await APIService.Delete('ImportDetail', importDetail.id);
                 setState((){});
               },
+            ),
+            IconButton(
+              icon: Icon(Icons.info_outline ),
+              color: Colors.black,
+              onPressed: () async{
+                Product? product = await RecommendProduct(importDetail.productId);
+                if(product != null)
+                  showAlertDialog(context, 'Recommended product: ${product.name}');
+                else
+                  showAlertDialog(context, 'Not enough data for the recommender.');
+              },
             )
           ],
         ),
       ),
     );
+  }
+
+  Future<Product?> RecommendProduct(int id) async{
+    var json = await APIService.Recommend('Product', id);
+    Product recommendedProduct = Product.fromJson(json);
+
+    return recommendedProduct;
   }
 
   Future<void> Save() async{
