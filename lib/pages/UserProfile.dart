@@ -409,7 +409,6 @@ class _UserProfileState extends State<UserProfile> {
         '"genderId": ${employee!.genderId},'
         '"birthDate": "${employee!.birthDate.toString().substring(0,10)}",'
         '"jmbg": "${employee!.jmbg}"}';
-    //print(body);
     var response = await APIService.Put('Employee', APIService.employeeId, body);
   }
 

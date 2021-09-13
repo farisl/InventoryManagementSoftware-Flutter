@@ -22,7 +22,6 @@ class APIService{
   }
 
   static Future<List<dynamic>?> Get(String route, String? query)  async{
-    //String queryString = Uri(queryParameters: object).query;
     String baseUrl = "https://10.0.2.2:5001/" + route;
     final String bearer = 'Bearer ' + token!;
 
