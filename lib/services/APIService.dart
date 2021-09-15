@@ -13,14 +13,6 @@ class APIService{
 
   APIService({this.route});
 
-  void SetParameters(String Token){
-    token = Token;
-  }
-
-  static String? result(){
-    return 'sring';
-  }
-
   static Future<List<dynamic>?> Get(String route, String? query)  async{
     String baseUrl = "https://10.0.2.2:5001/" + route;
     final String bearer = 'Bearer ' + token!;

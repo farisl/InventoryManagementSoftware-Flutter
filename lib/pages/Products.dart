@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:inventory_management_software/models/Department.dart';
 import 'package:inventory_management_software/models/Product.dart';
-import 'package:inventory_management_software/pages/ProductDetails.dart';
 import 'package:inventory_management_software/services/APIService.dart';
 import 'package:inventory_management_software/models//ProductSearchObject.dart';
 
