@@ -1,3 +1,3 @@
 Mobile
-  Username: User
-  Password: Test
+  Username: user
+  Password: test
