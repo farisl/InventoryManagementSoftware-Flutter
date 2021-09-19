@@ -14,7 +14,7 @@ class APIService{
   APIService({this.route});
 
   static Future<List<dynamic>?> Get(String route, String? query)  async{
-    String baseUrl = "https://10.0.2.2:5001/" + route;
+    String baseUrl = "http://10.0.2.2:63907/" + route;
     final String bearer = 'Bearer ' + token!;
 
     if(query != null)
@@ -31,7 +31,7 @@ class APIService{
   }
 
   static Future<dynamic> GetById(String route, int id)  async{
-    String baseUrl = "https://10.0.2.2:5001/" + route + '/' + id.toString();
+    String baseUrl = "http://10.0.2.2:63907/" + route + '/' + id.toString();
     final String bearer = 'Bearer ' + token!;
 
     final response = await http.get(
@@ -45,7 +45,7 @@ class APIService{
   }
 
   static Future<dynamic> Post(String route, String query)  async{
-    String baseUrl = "https://10.0.2.2:5001/" + route + '?' + query;
+    String baseUrl = "http://10.0.2.2:63907/" + route + '?' + query;
     final String bearer = 'Bearer ' + token!;
 
     final response = await http.post(
@@ -63,7 +63,7 @@ class APIService{
   }
 
   static Future<dynamic> Put(String route, int id, String body)  async{
-    String baseUrl = "https://10.0.2.2:5001/" + route + '/' + id.toString();
+    String baseUrl = "http://10.0.2.2:63907/" + route + '/' + id.toString();
     final String bearer = 'Bearer ' + token!;
 
     final response = await http.put(
@@ -82,7 +82,7 @@ class APIService{
   }
 
   static Future<bool> Delete(String route, int id) async{
-    String baseUrl = "https://10.0.2.2:5001/" + route + '/' + id.toString();
+    String baseUrl = "http://10.0.2.2:63907/" + route + '/' + id.toString();
     final String bearer = 'Bearer ' + token!;
 
     final response = await http.delete(
@@ -94,7 +94,7 @@ class APIService{
   }
 
   static Future<dynamic> Recommend(String route, int id)  async{
-    String baseUrl = "https://10.0.2.2:5001/" + route + '/' + id.toString()
+    String baseUrl = "http://10.0.2.2:63907/" + route + '/' + id.toString()
       + '/recommend';
 
     final response = await http.get(
